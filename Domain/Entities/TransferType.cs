@@ -9,9 +9,14 @@ namespace Domain.Entities
 {
     public class TransferType : TinyBaseEntity
     {
+        public TransferType()
+        {
+            TransferInfos = new HashSet<TransferInfo>();
+        }
+
         public string NameAr { get; set; } = string.Empty;
         public string NameEn { get; set; } = string.Empty;
 
-        public virtual required TransferInfo TransferInfo { get; set; }
+        public virtual ICollection<TransferInfo> TransferInfos { get; set; }
     }
 }

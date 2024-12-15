@@ -9,9 +9,14 @@ namespace Domain.Entities
 {
     public class PaymentType : TinyBaseEntity
     {
+        public PaymentType()
+        {
+            PaymentInfos = new HashSet<PaymentInfo>();
+        }
+
         public string NameAr { get; set; } = string.Empty;
         public string NameEn { get; set; } = string.Empty;
 
-        public virtual required PaymentInfo PaymentInfo { get; set; }
+        public virtual ICollection<PaymentInfo> PaymentInfos { get; set; }
     }
 }

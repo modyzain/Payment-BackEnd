@@ -9,6 +9,11 @@ namespace Domain.Entities
 {
     public class ProfileInfo : IntBaseEntity
     {
+        public ProfileInfo()
+        {
+            PaymentLogs = new HashSet<PaymentLog>();
+        }
+
         public string NameAr { get; set; } = string.Empty;
         public string NameEn { get; set; } = string.Empty;
         public string UserName { get; set; } = string.Empty;
@@ -20,6 +25,6 @@ namespace Domain.Entities
         public bool IsVerified { get; set; }
         public bool IsActive { get; set; }
 
-        public virtual required PaymentLog PaymentLog { get; set; }
+        public virtual ICollection<PaymentLog> PaymentLogs { get; set; }
     }
 }

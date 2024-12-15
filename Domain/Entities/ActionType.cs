@@ -9,9 +9,14 @@ namespace Domain.Entities
 {
     public class ActionType : TinyBaseEntity
     {
+        public ActionType()
+        {
+            PaymentLogs = new HashSet<PaymentLog>();
+        }
+
         public string NameAr { get; set; } = string.Empty;
         public string NameEn { get; set; } = string.Empty;
 
-        public virtual required PaymentLog PaymentLog { get; set; }
+        public virtual ICollection<PaymentLog> PaymentLogs { get; set; }
     }
 }

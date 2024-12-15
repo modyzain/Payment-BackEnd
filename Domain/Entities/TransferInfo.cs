@@ -9,15 +9,6 @@ namespace Domain.Entities
 {
     public class TransferInfo : IntBaseEntity
     {
-        public TransferInfo()
-        {
-            TransferTypes = new HashSet<TransferType>();
-            FromCountries = new HashSet<Country>();
-            ToCountries = new HashSet<Country>();
-            Currencies = new HashSet<Currency>();
-            TransferStatuses = new HashSet<TransferStatus>();
-        }
-
         public byte TransferTypeId { get; set; }
         public byte FromCountryId { get; set; }
         public byte ToCountryId { get; set; }
@@ -27,10 +18,10 @@ namespace Domain.Entities
         public byte TransferStatusId { get; set; }
         public string Description { get; set; } = string.Empty;
 
-        public virtual ICollection<TransferType> TransferTypes { get; set; }
-        public virtual ICollection<Country> FromCountries { get; set; }
-        public virtual ICollection<Country> ToCountries { get; set; }
-        public virtual ICollection<Currency> Currencies { get; set; }
-        public virtual ICollection<TransferStatus> TransferStatuses { get; set; } 
+        public virtual required TransferType TransferType { get; set; }
+        public virtual required Country FromCountry { get; set; }
+        public virtual required Country ToCountry  { get; set; }
+        public virtual required Currency Currency { get; set; }
+        public virtual required TransferStatus TransferStatus { get; set; } 
     }
 }

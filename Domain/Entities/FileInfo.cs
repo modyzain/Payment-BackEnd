@@ -9,10 +9,15 @@ namespace Domain.Entities
 {
     public class FileInfo : LongBaseEntity
     {
+        public FileInfo()
+        {
+            PaymentInfos = new HashSet<PaymentInfo>();
+        }
+
         public string FilePath { get; set; } = string.Empty;
         public string FileName { get; set; } = string.Empty;
         public int FileSize { get; set; }
 
-        public virtual required PaymentInfo PaymentInfo { get; set; }
+        public virtual ICollection<PaymentInfo> PaymentInfos { get; set; }
     }
 }

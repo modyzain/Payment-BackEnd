@@ -9,14 +9,6 @@ namespace Domain.Entities
 {
     public class PaymentInfo : IntBaseEntity
     {
-        public PaymentInfo()
-        {
-            Currencies = new HashSet<Currency>();
-            PaymentTypes = new HashSet<PaymentType>();
-            PaymentStatuses = new HashSet<PaymentStatus>();
-            FileInfos = new HashSet<FileInfo>();
-        }
-
         public byte CurrencyId { get; set; }
         public byte PaymentTypeId { get; set; }
         public byte PaymentStatusId { get; set; }
@@ -27,10 +19,10 @@ namespace Domain.Entities
         public string PayedTo { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
 
-        public virtual ICollection<Currency> Currencies { get; set; }
-        public virtual ICollection<PaymentType> PaymentTypes { get; set; }
-        public virtual ICollection<PaymentStatus> PaymentStatuses { get; set; }
-        public  virtual ICollection<FileInfo> FileInfos { get; set; }
+        public virtual required Currency Currency { get; set; }
+        public virtual required PaymentType PaymentType { get; set; }
+        public virtual required PaymentStatus PaymentStatus { get; set; }
+        public  virtual required FileInfo FileInfo { get; set; }
 
     }
 }

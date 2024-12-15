@@ -9,11 +9,17 @@ namespace Domain.Entities
 {
     public class Currency : TinyBaseEntity
     {
+        public Currency()
+        {
+            PaymentInfos = new HashSet<PaymentInfo>();
+            TransferInfos = new HashSet<TransferInfo>();
+        }
+
         public string NameAr { get; set; } = string.Empty;
         public string NameEn { get; set; } = string.Empty;
         public string Shortcut { get; set; } = string.Empty;
 
-        public virtual required TransferInfo TransferInfo { get; set; }
-        public virtual required PaymentInfo PaymentInfo { get; set; }
+        public virtual ICollection<TransferInfo> TransferInfos { get; set; }
+        public virtual ICollection<PaymentInfo> PaymentInfos { get; set; }
     }
 }
